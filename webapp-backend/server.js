@@ -2,7 +2,8 @@ import express from 'express'
 import mongoose from 'mongoose'
 import cors from 'cors'
 import dotenv from 'dotenv'
-import router from './routes/auth.js'
+import authRouter from './routes/auth.js'
+import pollRouter from './routes/poll.js'
 
 dotenv.config()
 
@@ -26,6 +27,7 @@ mongoose.connect( connecttionURL, {
 
 // Routes
 
-app.use('/api/auth',router);
+app.use('/api/auth',authRouter);
+app.use('/api/polls', pollRouter);
 
 

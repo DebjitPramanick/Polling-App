@@ -1,5 +1,5 @@
 import express from 'express'
-
+import jwt from 'jsonwebtoken'
 import UserModel from '../models/UserModel.js'
 
 const router = express.Router()
@@ -10,8 +10,12 @@ router.post(
         try {
             const user = await UserModel.create(req.body)
             const {_id,username} = user
-            res.json({_id,username})
+            const token = jwt.sign({_id,username}, process.env.SECRET)
+            res.status(201).json({_id,username,token})
         } catch (error) {
+            if(error.code === 11000){
+                error.message = 'Sorry, that username is already taken.'
+            }
             next(error)
         }
     }
@@ -26,14 +30,17 @@ router.post(
             const valid = await user.comparePassword(req.body.password)
 
             if(valid){
-                res.json({_id,username})
+                const token = jwt.sign({ _id, username }, process.env.SECRET)
+                res.json({_id,username,token})
                 console.log("User logged in.")
             }
             else{
                 res.send("Invalid username and password.")
                 console.log("Invalid password.")
             }
-        } catch (error) {}
+        } catch (error) {
+            res.send("Invalid username and password.")
+        }
     }
 )
 
