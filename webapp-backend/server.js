@@ -29,7 +29,7 @@ mongoose.connect( connecttionURL, {
 // Routes
 
 app.use('/api/auth',authRouter);
-app.use('/api/users/', userRouter);
+app.use('/api/users', userRouter);
 app.use('/api/polls', pollRouter);
 
 

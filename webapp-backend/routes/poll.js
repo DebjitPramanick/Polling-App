@@ -72,17 +72,6 @@ router.get(
     }
 )
 
-router.post(
-    '/:id',
-    async (req, res, next) => {
-        try {
-
-        } catch (error) {
-            next(error)
-        }
-    }
-)
-
 router.delete(
     '/delete/:_id',
     auth,
@@ -106,5 +95,55 @@ router.delete(
         }
     }
 )
+
+router.post(
+    '/vote/:_id',
+    auth,
+    async (req, res, next) => {
+        try {
+            const {_id: pollID} = req.params
+            const {_id: userID} = req.decoded
+            const {answer} = req.body
+            if(answer){
+                const poll = await PollModel.findById(pollID)
+                if(!poll) throw new Error('No poll found.')
+
+                const vote = poll.options.map(op => {
+                    if(op.option === answer){
+                        
+                        return{
+                            option: op.option,
+                            _id: op._id,
+                            votes: op.votes+1
+                        }
+                    }else{
+                        return op
+                    }
+                })
+
+                if(poll.voted.filter(user => 
+                    user.toString() === userID).length <= 0)
+                {
+                    poll.voted.push(userID)
+                    console.log(`Voted by userID ${userID}.`)
+                    poll.options = vote
+                    await poll.save()
+                    res.status(201).json(poll)
+                }
+
+                else throw new Error('Already voted.')
+            }
+            else{
+                throw new Error('No answer provided.')
+            }
+
+        } catch (error) {
+            error.status = 400
+            next(error)
+        }
+    }
+)
+
+
 
 export default router
