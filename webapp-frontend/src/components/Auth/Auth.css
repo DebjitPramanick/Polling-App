@@ -15,10 +15,11 @@ input{
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
-    font-size: 14px;
+    font-size: 15px;
     border: 0;
     outline: 0;
     margin-bottom: 14px;
+    max-height: 30px;
 }
 
 button{
