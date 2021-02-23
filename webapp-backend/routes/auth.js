@@ -35,11 +35,11 @@ router.post(
                 console.log("User logged in.")
             }
             else{
-                res.send("Invalid username and password.")
+                res.status(400).send("Invalid username and password.")
                 console.log("Invalid password.")
             }
         } catch (error) {
-            res.send("Invalid username and password.")
+            res.status(400).send("Invalid username and password.")
         }
     }
 )

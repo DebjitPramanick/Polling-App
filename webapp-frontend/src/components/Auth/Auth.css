@@ -1,0 +1,53 @@
+.auth-form{
+    max-width: 350px;
+    padding: 16px;
+    border: 1px solid grey;
+    background-color: #3f51b5;
+}
+
+.heading{
+    margin-bottom: 14px;
+    color: white;
+    font-size: 20px;
+}
+
+input{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    font-size: 14px;
+    border: 0;
+    outline: 0;
+    margin-bottom: 14px;
+}
+
+button{
+    background-color: white;
+    color: #3f51b5;
+    border: 0;
+    outline: 0;
+    padding: 10px;
+    font-size: 14ps;
+    max-height: 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+}
+
+.error-bar{
+    padding: 6px;
+    background-color: rgba(255, 88, 88, 0.959);
+    color: white;
+    font-size: 14px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.close-icon{
+    font-size: 18px !important;
+    color: white;
+    cursor: pointer;
+}

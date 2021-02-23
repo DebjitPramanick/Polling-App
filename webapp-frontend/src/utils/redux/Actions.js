@@ -36,7 +36,6 @@ export const authUser = (data) =>{
     return async dispatch =>{
         try {
             const res = await axios.instance.post('/auth/login',data)
-            console.log(res.data)
             const user = res.data
             localStorage.setItem('jwttoken', user.token)
             axios.setToken(user.token)
@@ -45,7 +44,7 @@ export const authUser = (data) =>{
             console.log(`User logged in - ${user.username}`)
 
         } catch (err) {
-            const {error} = err.response.data
+            const error = err.response.data
             dispatch(addError(error))
         }
     }
