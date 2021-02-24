@@ -52,3 +52,15 @@ button{
     color: white;
     cursor: pointer;
 }
+
+.box-message{
+    color: rgb(204, 204, 204);
+    margin-top: 14px;
+    font-size: 14px;
+}
+
+.box-message a{
+    color: white;
+    margin-left: 8px;
+    text-decoration: none;
+}

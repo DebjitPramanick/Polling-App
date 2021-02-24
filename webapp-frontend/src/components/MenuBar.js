@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Route } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -13,10 +14,11 @@ const useStyles = makeStyles((theme) => ({
         flexGrow: 1,
     },
     menuButton: {
-        marginRight: theme.spacing(2),
+        marginRight: theme.spacing(1),
     },
     title: {
         flexGrow: 1,
+
     },
 }));
 
@@ -32,7 +34,7 @@ export default function MenuBar() {
             <AppBar position="static">
                 <Toolbar>
                     <Typography variant="h6" className={classes.title}>
-                        Polls
+                        Polling App
                     </Typography>
                     {auth && (
                         <div>
@@ -45,6 +47,8 @@ export default function MenuBar() {
                             >
                                 <AccountCircle />
                             </IconButton>
+
+
                             <Menu
                                 id="menu-appbar"
                                 anchorEl={anchorEl}
@@ -63,6 +67,8 @@ export default function MenuBar() {
                                 <MenuItem onClick={() => setAnchorEl(null)}>Profile</MenuItem>
                                 <MenuItem onClick={() => setAnchorEl(null)}>My account</MenuItem>
                             </Menu>
+
+                            
                         </div>
                     )}
                 </Toolbar>

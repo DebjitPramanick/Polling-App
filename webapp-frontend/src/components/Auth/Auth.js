@@ -4,13 +4,14 @@ import CircularProgress from '@material-ui/core/CircularProgress';
 import { authUser, removeError } from '../../utils/redux/Actions';
 import "./Auth.css"
 import CloseIcon from '@material-ui/icons/Close';
+import { Link } from 'react-router-dom';
 
-const Auth = () => {
+const Auth = ({ type }) => {
 
     const authError = useSelector(state => state.error);
     const dispatch = useDispatch();
     const { message } = authError;
-    
+
 
     const [show, setShow] = useState(false)
     const [error, setError] = useState(false)
@@ -19,9 +20,9 @@ const Auth = () => {
         password: ''
     })
 
-    const handleLogin = (e) =>{
+    const handleLogin = (e) => {
         e.preventDefault()
-        if(data.username && data.password){
+        if (data.username && data.password) {
             dispatch(authUser({
                 username: data.username,
                 password: data.password
@@ -30,9 +31,14 @@ const Auth = () => {
             setShow(true)
             setTimeout(() => {
                 setShow(false)
-            },2500)
+            }, 2500)
         }
         else alert("Fill required inputs.")
+    }
+
+    const handleRegister = (e) => {
+        e.preventDefault()
+
     }
 
     useEffect(() => {
@@ -43,26 +49,29 @@ const Auth = () => {
         }
     }, [message])
 
-    const handleError = () =>{
+    const handleError = () => {
         setError(false)
-        setData({username: '', password: ''});
+        setData({ username: '', password: '' });
         dispatch(removeError())
     }
 
 
     return (
         <div>
+
             <form className="auth-form">
 
-                <div className="heading">
-                    Log-in
-                </div>
+                {(type === 'login') ? (
+                    <div className="heading">Log-in</div>
+                ) : (
+                        <div className="heading">Register</div>
+                )}
 
-                {error && 
+                {error &&
                     (<p className="error-bar">
-                        {message} 
+                        {message}
                         <CloseIcon className="close-icon"
-                        onClick={handleError}/>
+                            onClick={handleError} />
                     </p>)
                 }
 
@@ -72,16 +81,34 @@ const Auth = () => {
                 </input>
 
                 <input placeholder="Enter password: " value={data.password}
-                    onChange={(e) => setData({...data, password: e.target.value })}>
+                    onChange={(e) => setData({ ...data, password: e.target.value })}>
                 </input>
 
-                <button onClick={(e) => handleLogin(e)}>
-                    Log-in
-                    {show && <span><CircularProgress size="14px" thickness={7} /></span>}
-                </button>
-                
-                
+                {(type === 'login') ? (
+                    <button onClick={(e) => handleLogin(e)}>
+                        Log-in
+                        {show && <span><CircularProgress size="14px" thickness={7} /></span>}
+                    </button>
+                ) : (
+                        <button onClick={(e) => handleRegister(e)}>
+                            Register
+                            {show && <span><CircularProgress size="14px" thickness={7} /></span>}
+                        </button>
+                    )}
+
+                {(type === 'login') ? (
+                    <p className="box-message">
+                        Don't have an account?
+                        <Link to="/register">Register</Link>
+                    </p>
+                ) : (
+                        <p className="box-message">
+                            Already have an account?
+                            <Link to="/login">Log-in</Link>
+                        </p>
+                    )}
             </form>
+
         </div>
     )
 }
