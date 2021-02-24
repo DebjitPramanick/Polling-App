@@ -29,9 +29,7 @@ const Auth = ({ type }) => {
             }))
 
             setShow(true)
-            setTimeout(() => {
-                setShow(false)
-            }, 2500)
+            
         }
         else alert("Fill required inputs.")
     }

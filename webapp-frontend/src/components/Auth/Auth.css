@@ -11,7 +11,7 @@
     font-size: 20px;
 }
 
-input{
+.auth-form input{
     width: 100%;
     box-sizing: border-box;
     padding: 10px;
@@ -22,7 +22,7 @@ input{
     max-height: 30px;
 }
 
-button{
+.auth-form button{
     background-color: white;
     color: #3f51b5;
     border: 0;

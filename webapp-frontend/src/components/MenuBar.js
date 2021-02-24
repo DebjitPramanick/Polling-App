@@ -12,20 +12,28 @@ const useStyles = makeStyles((theme) => ({
     root: {
         flexGrow: 1,
     },
-    menuButton: {
-        marginRight: theme.spacing(1),
-    },
     title: {
         flexGrow: 1,
-
     },
+    name: {
+        fontSize: '18px',
+        marginRight: theme.spacing(1),
+        marginBottom: theme.spacing(0.4)
+    },
+    profile: {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
 }));
 
-export default function MenuBar({ isAuth }) {
+export default function MenuBar({ authUser }) {
     const classes = useStyles();
     const [auth, setAuth] = React.useState(true);
     const [anchorEl, setAnchorEl] = React.useState(null);
     const open = Boolean(anchorEl);
+
+    const {isAuth, user} = authUser
 
     return (
         <div className={classes.root}>
@@ -44,8 +52,10 @@ export default function MenuBar({ isAuth }) {
                                 aria-controls="menu-appbar"
                                 aria-haspopup="true"
                                 color="inherit"
+                                className={classes.profile}
                             >
-                                <Link to="/"> <AccountCircle /></Link>
+                                <p className={classes.name}>{user.username}</p>
+                                <Link to="/profile"> <AccountCircle /></Link>
                             </IconButton>
                         </div>
                     ) : (
@@ -55,6 +65,7 @@ export default function MenuBar({ isAuth }) {
                                     aria-controls="menu-appbar"
                                     aria-haspopup="true"
                                     color="inherit"
+                                    className={classes.profile}
                                 >
                                     <Link to="/login"> <AccountCircle /></Link>
                                 </IconButton>
