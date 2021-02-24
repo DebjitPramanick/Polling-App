@@ -55,7 +55,7 @@ const Auth = ({ type }) => {
 
 
     return (
-        <div>
+        <div className="container">
 
             <form className="auth-form">
 

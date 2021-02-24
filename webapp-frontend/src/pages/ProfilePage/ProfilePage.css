@@ -1,0 +1,72 @@
+.sub-container{
+    max-width: 900px;
+    margin: auto;
+    padding: 10px;
+    border: 1px grey solid;
+}
+
+
+.username{
+    color: grey;
+    font-size: 36px;
+    margin-top: 20px;
+}
+
+
+.flex-container{
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    column-gap: 18px;
+}
+
+.your-polls, .your-votes{
+    cursor: pointer;
+    flex-basis: 50%;
+    height: 120px;
+    border: 1px solid grey;
+    position: relative;
+}
+
+.your-polls{
+    background-image: url('https://cdn.statcdn.com/Statistic/1145000/1147403-blank-754.png');
+    background-size: contain;
+    background-position: center;
+}
+
+
+.your-votes{
+    background-image: url('https://news.uchicago.edu/sites/default/files/styles/full_width/public/images/2019-07/Mobile%20voting.jpg?itok=oezMDWp-');
+    background-size: contain;
+    background-position: center;
+}
+
+.overlay{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.582);
+    color: white
+}
+
+
+.logout-btn{
+    background-color: white;
+    color: #3f51b5;
+    border: 1px solid grey;
+    outline: 0;
+    padding: 10px;
+    font-size: 14ps;
+    max-height: 30px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    column-gap: 10px;
+    margin-top: 20px;
+}
