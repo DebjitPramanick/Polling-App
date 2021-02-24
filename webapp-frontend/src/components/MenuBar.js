@@ -9,71 +9,49 @@ import AccountCircle from '@material-ui/icons/AccountCircle';
 
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        flexGrow: 1,
-    },
-    title: {
-        flexGrow: 1,
-    },
     name: {
         fontSize: '18px',
         marginRight: theme.spacing(1),
-        marginBottom: theme.spacing(0.4)
+        color: 'white'
     },
     profile: {
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     }
 }));
 
 export default function MenuBar({ authUser }) {
     const classes = useStyles();
-    const [auth, setAuth] = React.useState(true);
-    const [anchorEl, setAnchorEl] = React.useState(null);
-    const open = Boolean(anchorEl);
 
-    const {isAuth, user} = authUser
+    const { isAuth, user } = authUser
 
     return (
-        <div className={classes.root}>
+        <div className="nav-bar">
+            <div className="nav-container">
 
-            <AppBar position="static">
-                <Toolbar>
+                <Link to="/"> <h3>Polling App</h3></Link>
 
-                    <Typography variant="h6" className={classes.title}>
-                        <Link to="/"> Polling App</Link>
-                    </Typography>
-
-                    {isAuth ? (
+                {isAuth ? (
+                    <div>
+                        <IconButton
+                            className={classes.profile}
+                        >
+                            <p className={classes.name}>{user.username}</p>
+                            <Link to="/profile"><AccountCircle className="icon"/></Link>
+                        </IconButton>
+                    </div>
+                ) : (
                         <div>
                             <IconButton
-                                aria-label="account of current user"
-                                aria-controls="menu-appbar"
-                                aria-haspopup="true"
-                                color="inherit"
                                 className={classes.profile}
                             >
-                                <p className={classes.name}>{user.username}</p>
-                                <Link to="/profile"> <AccountCircle /></Link>
+                                <Link to="/login"><AccountCircle className="icon"/></Link>
                             </IconButton>
                         </div>
-                    ) : (
-                            <div>
-                                <IconButton
-                                    aria-label="account of current user"
-                                    aria-controls="menu-appbar"
-                                    aria-haspopup="true"
-                                    color="inherit"
-                                    className={classes.profile}
-                                >
-                                    <Link to="/login"> <AccountCircle /></Link>
-                                </IconButton>
-                            </div>
-                        )}
+                    )}
 
-                </Toolbar>
-            </AppBar>
+            </div>
         </div>
     );
 }

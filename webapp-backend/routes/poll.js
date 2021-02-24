@@ -127,7 +127,7 @@ router.post(
             const {answer} = req.body
             if(answer){
                 const poll = await PollModel.findById(pollID)
-                if(!poll) throw new Error('No poll found.')
+                if(!poll) throw new Error('No answer given.')
 
                 const vote = poll.options.map(op => {
                     if(op.option === answer){

@@ -1,5 +1,23 @@
 .container{
-    margin: 10px;
+    max-width: 1200px;
+    margin: auto;
+    margin-top: 10px;
+}
+.nav-bar{
+    background-color: #3f51b5;
+    padding: 6px;
+}
+.nav-container{
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-container a{
+    display: flex;
+    align-items: center;
 }
 
 .container img{

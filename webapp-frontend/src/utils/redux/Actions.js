@@ -99,7 +99,6 @@ export const getPolls = () => {
             dispatch(setPolls(polls))
             dispatch(removeError())
         } catch (error) {
-            const err = error.response.data;
             dispatch(addError(error.message))
         }
     }
@@ -157,11 +156,11 @@ export const getCurPoll = (id) => {
     }
 }
 
-export const vote = (id) =>{
+export const vote = (id, data) =>{
     return async dispatch => {
         try {
             const token = localStorage.jwttoken
-            const poll = axios.instance.post(`/polls/vote/${id}`, {
+            const poll = axios.instance.post(`/polls/vote/${id}`, data, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 }
