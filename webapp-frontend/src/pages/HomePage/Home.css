@@ -16,3 +16,8 @@
 .MuiIconButton-root{
     padding: 0px !important;
 }
+
+a{
+    color: white;
+    text-decoration: none;
+}

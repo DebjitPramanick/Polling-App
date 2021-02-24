@@ -36,6 +36,7 @@ export const authUser = (data) =>{
     return async dispatch =>{
         try {
             const res = await axios.instance.post('/auth/login',data)
+            console.log(res)
             const user = res.data
             localStorage.setItem('jwttoken', user.token)
             axios.setToken(user.token)

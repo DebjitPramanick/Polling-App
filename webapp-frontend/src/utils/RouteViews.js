@@ -2,6 +2,7 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 import AuthPage from '../pages/AuthPage/AuthPage'
 import { useSelector, useDispatch } from 'react-redux'
+import Home from '../pages/HomePage/Home'
 
 const RouteViews = () => {
 
