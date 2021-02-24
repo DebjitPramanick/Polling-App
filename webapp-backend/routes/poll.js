@@ -54,10 +54,31 @@ router.get(
 )
 
 router.get(
+    '/user',
+    auth,
+    async (req,res,next) => {
+        try {
+            const {_id} = req.decoded
+
+            const user = await UserModel.findById(_id)
+                .populate('polls');
+
+            res.status(200).json(user.polls)
+        } catch (err) {
+            return next({
+                status: 400,
+                message: err.message,
+            });
+        }
+    }
+)
+
+router.get(
     '/:_id',
     async(req,res,next)=>{
         try {
             const {_id} = req.params
+            console.log(_id)
             const poll = await PollModel.findById(_id)
                 .populate('user', ['username', '_id'])
 

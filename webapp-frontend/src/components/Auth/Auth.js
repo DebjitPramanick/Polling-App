@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { authUser, removeError } from '../../utils/redux/Actions';
+import { authUser, registerUser, removeError } from '../../utils/redux/Actions';
 import "./Auth.css"
 import CloseIcon from '@material-ui/icons/Close';
 import { Link } from 'react-router-dom';
@@ -36,7 +36,16 @@ const Auth = ({ type }) => {
 
     const handleRegister = (e) => {
         e.preventDefault()
+        if (data.username && data.password) {
+            dispatch(registerUser({
+                username: data.username,
+                password: data.password
+            }))
 
+            setShow(true)
+
+        }
+        else alert("Fill required inputs.")
     }
 
     useEffect(() => {
