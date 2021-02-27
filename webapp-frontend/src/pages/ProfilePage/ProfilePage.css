@@ -20,7 +20,7 @@
     column-gap: 18px;
 }
 
-.your-polls, .your-votes{
+.your-polls, .create-polls{
     cursor: pointer;
     flex-basis: 50%;
     height: 120px;
@@ -35,7 +35,7 @@
 }
 
 
-.your-votes{
+.create-polls{
     background-image: url('https://news.uchicago.edu/sites/default/files/styles/full_width/public/images/2019-07/Mobile%20voting.jpg?itok=oezMDWp-');
     background-size: contain;
     background-position: center;

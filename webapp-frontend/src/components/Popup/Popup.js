@@ -11,7 +11,7 @@ const Popup = ({setPopup, polls}) => {
         <div className="popupScreen">
             <div className="popup">
                 <CancelIcon className="cancel" onClick={() => setPopup(false)} />
-                <h3>Your Polls</h3>
+                <h3>Your Polls ({polls.length})</h3>
                 <PollContainer polls={polls} controls={true} />
 
             </div>

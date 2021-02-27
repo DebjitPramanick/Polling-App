@@ -1,0 +1,36 @@
+.popupScreen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.616);
+  cursor: not-allowed;
+  z-index: 999;
+}
+.popup {
+  width: 600px;
+  height: 600px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 10px;
+  position: relative;
+  cursor: auto;
+  overflow: hidden;
+  
+}
+.cancel {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 20px;
+}
+
+.popup h3{
+  margin-bottom: 30px;
+}

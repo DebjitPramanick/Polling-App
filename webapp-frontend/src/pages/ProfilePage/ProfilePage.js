@@ -6,10 +6,12 @@ import "./ProfilePage.css"
 
 import HomeIcon from '@material-ui/icons/Home';
 import Popup from '../../components/Popup/Popup';
+import InputBox from '../../components/Input Popup/InputBox';
 
 const ProfilePage = ({ authUser }) => {
 
     const [popup, setPopup] = useState(false)
+    const [ip, setIp] = useState(false)
     const dispatch = useDispatch();
     const userPolls = useSelector(state => state.userPolls)
     const { isAuth, user } = authUser;
@@ -23,13 +25,6 @@ const ProfilePage = ({ authUser }) => {
         dispatch(getUserPolls())
     }, [])
 
-    const showPolls = () => {
-        console.log(userPolls)
-        setPopup(true)
-    }
-
-    
-
     if (!isAuth) return <Redirect to="/" />
 
     return (
@@ -38,15 +33,18 @@ const ProfilePage = ({ authUser }) => {
                 {popup && (
                     <Popup setPopup={setPopup} polls={userPolls} />
                 )}
+                {ip && (
+                    <InputBox setIp={setIp} />
+                )}
                 <Link className="back-to-home" to="/"><HomeIcon className="icon" /></Link>
                 <p className="username">{user.username}</p>
 
                 <div className="flex-container">
-                    <div className="your-polls" onClick={showPolls}>
+                    <div className="your-polls" onClick={() => setPopup(true)}>
                         <div className="overlay">Your Polls</div>
                     </div>
-                    <div className="your-votes">
-                        <div className="overlay">Your Votes</div>
+                    <div className="create-polls" onClick={() => setIp(true)}>
+                        <div className="overlay">Create Polls</div>
                     </div>
                 </div>
 

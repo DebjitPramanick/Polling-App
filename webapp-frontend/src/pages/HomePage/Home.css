@@ -25,6 +25,7 @@
 }
 
 .main-container{
+    height: 90vh;
     display: grid;
     grid-template-columns: 2fr 1fr;
     column-gap: 14px;
