@@ -3,15 +3,16 @@ import {useSelector, useDispatch} from 'react-redux'
 import QueryBuilderIcon from '@material-ui/icons/QueryBuilder';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ThumbsUpDownIcon from '@material-ui/icons/ThumbsUpDown';
-import { vote } from '../../utils/redux/Actions';
+import { deletePoll, vote } from '../../utils/redux/Actions';
+import DeleteIcon from '@material-ui/icons/Delete';
 
-const Poll = ({ poll }) => {
+const Poll = ({ poll, controls }) => {
     const dispatch = useDispatch()
     const authUser = useSelector(state => state.auth)
     const {isAuth, user} = authUser
 
+
     const [id, setId] = useState('')
-    console.log(poll)
     let date = new Date(poll.created);
     const pollDate = `${date.getUTCDate()} ${date.toLocaleString('default', { month: 'short' })}, ${date.getUTCFullYear()}`
 
@@ -20,14 +21,21 @@ const Poll = ({ poll }) => {
         setId(optionId)
     }
 
+    const handleDelete = () =>{
+        alert(poll._id)
+        dispatch(deletePoll(poll._id))
+    }
+
 
     return (
         <div className="card-container">
             <div className="detail-container">
-                <div className="createdBy">
-                    <AccountCircleIcon className="icon" />
-                    Created by {poll.user.username}
-                </div>
+                {!controls && (
+                    <div className="createdBy">
+                        <AccountCircleIcon className="icon" />
+                        Created by {poll.user.username}
+                    </div>
+                )}
                 <div className="createdOn">
                     <QueryBuilderIcon className="icon" />
                     Created on {pollDate}
@@ -50,6 +58,12 @@ const Poll = ({ poll }) => {
                 <ThumbsUpDownIcon className="icon"/>
                 Voted by {poll.voted.length} people
             </div>
+
+            {controls && (
+                <div className="delet-btn" onClick={handleDelete}>
+                    <DeleteIcon className="icon" />
+                </div>
+            )}
         </div>
     )
 }

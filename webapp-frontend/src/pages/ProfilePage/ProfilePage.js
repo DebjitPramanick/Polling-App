@@ -1,14 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, Redirect } from 'react-router-dom';
 import { getUserPolls, logout } from '../../utils/redux/Actions'
 import "./ProfilePage.css"
 
 import HomeIcon from '@material-ui/icons/Home';
+import Popup from '../../components/Popup/Popup';
 
 const ProfilePage = ({ authUser }) => {
 
-
+    const [popup, setPopup] = useState(false)
     const dispatch = useDispatch();
     const userPolls = useSelector(state => state.userPolls)
     const { isAuth, user } = authUser;
@@ -23,8 +24,8 @@ const ProfilePage = ({ authUser }) => {
     }, [])
 
     const showPolls = () => {
-        console.log("User", user.username)
         console.log(userPolls)
+        setPopup(true)
     }
 
     
@@ -34,6 +35,9 @@ const ProfilePage = ({ authUser }) => {
     return (
         <div>
             <div className="sub-container">
+                {popup && (
+                    <Popup setPopup={setPopup} polls={userPolls} />
+                )}
                 <Link className="back-to-home" to="/"><HomeIcon className="icon" /></Link>
                 <p className="username">{user.username}</p>
 

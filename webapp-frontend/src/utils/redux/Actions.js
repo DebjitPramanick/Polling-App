@@ -142,6 +142,25 @@ export const createPoll = (data) => {
     }
 }
 
+export const deletePoll = (id) => {
+    return async dispatch => {
+        try {
+            const token = localStorage.jwttoken
+            const poll = axios.instance.delete(`/polls/delete/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                }
+            })
+            dispatch(setCurPoll(poll))
+            dispatch(removeError())
+        } catch (error) {
+            const err = error.response.data;
+            dispatch(addError(error.message))
+        }
+    }
+}
+
+
 
 export const getCurPoll = (id) => {
     return async dispatch => {

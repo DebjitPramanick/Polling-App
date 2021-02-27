@@ -3,16 +3,13 @@ import Poll from './Poll'
 import "./Poll.css"
 import UtilBox from './UtilBox'
 
-const PollContainer = ({polls}) => {
+const PollContainer = ({ polls, controls}) => {
 
     return (
-        <div className="main-container">
-            <div className="poll-container">
-                {polls ? polls.map(p => (
-                    <Poll poll={p} key={p._id} />
-                )) : <p>No polls found.</p>}
-            </div>
-            <UtilBox />
+        <div className="poll-container">
+            {polls ? polls.map(p => (
+                <Poll poll={p} key={p._id} controls={controls} />
+            )) : <p>No polls found.</p>}
         </div>
         
     )

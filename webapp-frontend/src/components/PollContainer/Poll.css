@@ -1,11 +1,7 @@
-.main-container{
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    column-gap: 14px;
-}
+
 
 .poll-container{
-    max-height: 90vh;
+    max-height: 94%;
     overflow-y: scroll;
 }
 
@@ -13,6 +9,20 @@
     padding: 16px;
     border: 1px solid grey;
     margin-bottom: 20px;
+}
+
+.delet-btn{
+    padding: 4px;
+    background-color: #ff6161;
+    color: white;
+    text-align: center;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.delet-btn .icon{
+    color: white !important;
+    font-size: 18px !important;
 }
 
 
