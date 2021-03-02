@@ -3,6 +3,13 @@
     margin: auto;
     margin-top: 10px;
 }
+
+@media(max-width: 560px){
+    .container{
+        margin: 10px;
+    }
+}
+
 .nav-bar{
     background-color: #3f51b5;
     padding: 6px;
@@ -29,6 +36,13 @@
     display: grid;
     grid-template-columns: 2fr 1fr;
     column-gap: 14px;
+}
+
+@media(max-width: 560px){
+    .main-container{
+        display: flex;
+        flex-direction: column-reverse;
+    }
 }
 
 .MuiToolbar-gutters{

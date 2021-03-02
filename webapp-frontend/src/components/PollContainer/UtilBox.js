@@ -16,7 +16,7 @@ const UtilBox = () => {
                 )}
 
             {isAuth ? (
-                <div className="box-container">
+                <div className="box-container flex">
                     <Link to="/profile">
                         <div className="actions">
                             Create Poll

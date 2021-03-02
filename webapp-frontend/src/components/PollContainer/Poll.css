@@ -50,6 +50,23 @@
 .box-container{
     margin-top: 14px;
 }
+
+@media(max-width: 560px){
+    .util-box{
+        margin-bottom: 10px;
+        padding: 4px;
+    }
+    .flex{
+        display: flex;
+        align-items: center;
+        column-gap: 10px;
+    }
+    .flex a{
+        width: 50%;
+    }
+}
+
+
 .login-message{
     color: rgb(255, 73, 73);
     font-size: 16px;
@@ -77,6 +94,17 @@
     align-items: center;
     color: white;
     cursor: pointer;
+}
+
+@media(max-width: 560px){
+    .box-container{
+        margin-top: 6px;
+    }
+    .actions{
+        min-height: 30px;
+        margin-bottom: 0;
+        font-size: 14px;
+    }
 }
 
 .second{
