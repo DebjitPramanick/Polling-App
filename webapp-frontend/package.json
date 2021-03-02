@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.7.1",
     "axios": "^0.21.1",
     "chart.js": "^2.9.4",
+    "firebase": "^8.2.9",
     "jwt-decode": "^3.1.2",
     "react": "^17.0.1",
     "react-chartjs-2": "^2.11.1",

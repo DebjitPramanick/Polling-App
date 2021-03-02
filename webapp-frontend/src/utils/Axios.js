@@ -12,7 +12,7 @@ const setToken = (token) =>{
 
 
 const instance = axios.create({
-    baseURL: 'http://localhost:8000/api'
+    baseURL: 'https://polling-app-2021.herokuapp.com/api'
 })
 
 export default {instance, setToken}
