@@ -1,35 +1,48 @@
-import React from 'react'
-import {Pie} from 'react-chartjs-2'
+import React, {useState} from 'react'
+import { Pie} from 'react-chartjs-2'
+import chart from 'chart.js'
 import "./Chart.css"
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
 const color = () => {
-    return ('#'+ Math.random().toString().slice(2,8))
+    return ('#' + Math.random().toString().slice(2, 8))
 }
 
-const Chart = ({poll}) => {
+const Chart = ({ poll }) => {
 
-    const data = {
-        lebels: poll.options.map( op => op.option),
-        dataset: [
+    const [open, setOpen] = useState(false)
+    const [up, setUp] = useState(false)
+
+    const expand = () =>{
+        setOpen(!open)
+        setUp(!up)
+    }
+
+    const info = {
+        labels: poll.options.map(op => op.option),
+        datasets: [
             {
                 label: poll.question,
-                backgroundColor: poll.options.map(op => color()),
-                borderColor: '#323643',
-                data: poll.options.map(op=>op.votes)
+                backgroundColor: ['#45B8AC', '#FF6F61', '#92A8D1', '#DD4124'],
+                borderColor: '#8B8680',
+                data: poll.options.map(op => op.votes)
             }
         ]
     }
-
-    console.log(data)
 
     return (
         <div>
             <div className="dropdown">
                 Show stats
-                <ExpandMoreIcon />
+                {up ? <ExpandLessIcon onClick={expand}/>
+                    : <ExpandMoreIcon onClick={expand}/>}
+                
             </div>
-            <Pie data={data}/>
+            <div className={`chart-container ${open && 'show'}`}>
+                <Pie data={info} />
+            </div>
+
         </div>
     )
 }

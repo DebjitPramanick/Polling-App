@@ -9,3 +9,24 @@
     font-size: 16px;
     cursor: pointer;
 }
+
+
+.chart-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 0px;
+    overflow: hidden;
+    transition: 0.2s linear;
+}
+
+.chart-container.show{
+    height: 300px;
+}
+
+
+
+.chart-container canvas{
+    max-height: 440px;
+    max-width: 440px
+}
