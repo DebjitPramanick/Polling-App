@@ -1,0 +1,11 @@
+.dropdown{
+    margin-top: 10px;
+    background-color: rgb(212, 212, 212);
+    border: 1px solid grey;
+    padding: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 16px;
+    cursor: pointer;
+}

@@ -5,6 +5,7 @@ import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import ThumbsUpDownIcon from '@material-ui/icons/ThumbsUpDown';
 import { deletePoll, vote } from '../../utils/redux/Actions';
 import DeleteIcon from '@material-ui/icons/Delete';
+import Chart from "../Chart/Chart"
 
 const Poll = ({ poll, controls }) => {
     const dispatch = useDispatch()
@@ -64,6 +65,10 @@ const Poll = ({ poll, controls }) => {
                     <DeleteIcon className="icon" />
                 </div>
             )}
+
+            <Chart poll={poll}/>
+
+            
         </div>
     )
 }
