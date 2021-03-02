@@ -25,6 +25,14 @@
     font-size: 18px !important;
 }
 
+.success-message{
+    color: rgb(0, 94, 31);
+    background-color: rgb(47, 255, 158);
+    padding: 4px 8px;
+    font-size: 12px;
+    width: fit-content;
+    border-radius: 50px;
+}
 
 
 

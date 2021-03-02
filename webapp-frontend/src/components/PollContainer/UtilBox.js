@@ -13,17 +13,21 @@ const UtilBox = () => {
                 <h2>Welcome {user.username}</h2>
             ) : (
                     <h2>Welcome to Polling App</h2>
-            )}
-            
+                )}
+
             {isAuth ? (
                 <div className="box-container">
-                    <div className="actions">
-                        Create Poll
-                    </div>
-                    <div className="actions second">
-                        All Polls
-                    </div>
-                    
+                    <Link to="/profile">
+                        <div className="actions">
+                            Create Poll
+                        </div>
+                    </Link>
+                    <Link to="/profile">
+                        <div className="actions second">
+                            All Polls
+                        </div>
+                    </Link>
+
                 </div>
             ) : (
                     <div className="box-container">

@@ -1,13 +1,9 @@
 import React, {useState} from 'react'
 import { Pie} from 'react-chartjs-2'
-import chart from 'chart.js'
 import "./Chart.css"
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 
-const color = () => {
-    return ('#' + Math.random().toString().slice(2, 8))
-}
 
 const Chart = ({ poll }) => {
 
@@ -33,7 +29,7 @@ const Chart = ({ poll }) => {
 
     return (
         <div>
-            <div className="dropdown">
+            <div className="dropdown" onClick={expand}>
                 Show stats
                 {up ? <ExpandLessIcon onClick={expand}/>
                     : <ExpandMoreIcon onClick={expand}/>}
