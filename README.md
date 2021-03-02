@@ -1,4 +1,4 @@
-# TRELLO CLONE
+# POLLING APP
 
 Hi! I'm Debjit, a **MERN Stack Developer**. This is a clone of popular project management application **Polling App**. I have created it with **React** in frontend,  **Node and Express** for backend and **MongoDB** for storing data.
 <br>
