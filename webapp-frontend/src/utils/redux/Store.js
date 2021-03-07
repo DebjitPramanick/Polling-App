@@ -16,13 +16,13 @@ const rootReducer = combineReducers({
 const initialState = {
     error: {message: null}
 }
+const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export const store = createStore(
     rootReducer,
     initialState,
-    compose(
+    composeEnhancer(
         applyMiddleware(thunk),
-        window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
     )
 )
 

@@ -32,6 +32,7 @@
     font-size: 12px;
     width: fit-content;
     border-radius: 50px;
+    white-space: nowrap;
 }
 
 
